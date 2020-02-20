@@ -13,7 +13,7 @@
           <p v-for="article in articles" :key="article.id">
             <strong>{{article.id}}</strong>
             <router-link :to="{name: 'ArticleShow', params: {id: article.id} }">
-              {{article.content}}
+              {{article.title}}
             </router-link>
           </p>
         </div>
@@ -31,14 +31,21 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      articles: [
-        {id: 1, content: '12313'},
-        {id: 2, content: '123132222'}
-      ]
+      articles: []
     }
   },
   components: {
     Navbar
+  },
+  mounted () {
+    this.$http.get('/api/v1/articles').then(
+      response => {
+        console.info('res.body is ', response.body)
+        this.articles = response.body.articles
+      }, response => {
+        console.error(response)
+      }
+    )
   }
 }
 </script>
