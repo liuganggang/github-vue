@@ -2,7 +2,7 @@
   <div class="blog-masthead">
     <div class="container">
       <nav class="blog-nav">
-        <router-link :to="{name: 'ArticleIndex'}" class="blog-nav-item active">Home</router-link>
+        <router-link :to="{name: 'ArticleIndex'}" class="blog-nav-item active">{{title}}</router-link>
       </nav>
     </div>
   </div>
@@ -15,6 +15,7 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
+  props: ['title']
 }
 </script>

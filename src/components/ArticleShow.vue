@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar></Navbar>
+    <Navbar :title="home"></Navbar>
 
     <div class="container">
       <div class="blog-header">
